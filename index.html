@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>My Next Season — A 12-Week Life Season Workbook</title>
+<meta name="description" content="My Next Season by Chengetai Shereni. One goal, twelve weeks, sixty-four bites. Your season, stored on your own phone.">
+<style>
+  :root{
+    --green:#124033; --green2:#1b5a46; --gold:#c6a04a; --goldsoft:#e9dcc0;
+    --paper:#faf6ec; --card:#fffdf7; --ink:#23272a; --mute:#6f6a5e; --line:#e2dac6;
+    --burg:#802a34;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px; line-height:1.5; padding-bottom:86px;}
+  .serif{font-family:Georgia,"Times New Roman","Hiragino Mincho ProN",serif;}
+  header{background:var(--green); color:#f5efdd; padding:22px 18px 18px; text-align:center;}
+  header .kick{letter-spacing:.28em; font-size:11px; color:var(--gold); text-transform:uppercase;}
+  header h1{margin:6px 0 2px; font-size:30px; font-weight:600;}
+  header .sub{font-style:italic; color:#e8dfc6; font-size:14px;}
+  header .by{margin-top:8px; font-size:12.5px; color:#cfdcce;}
+  main{max-width:640px; margin:0 auto; padding:16px 14px 8px;}
+  nav{position:fixed; left:0; right:0; bottom:0; background:var(--green); z-index:50;
+    display:flex; box-shadow:0 -2px 14px rgba(0,0,0,.25);}
+  nav button{flex:1; background:none; border:none; color:#d9e4d4; font-size:12.5px;
+    padding:12px 2px calc(12px + env(safe-area-inset-bottom)); cursor:pointer; letter-spacing:.04em;}
+  nav button.on{color:#fff; box-shadow:inset 0 3px 0 var(--gold); font-weight:700;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin:0 0 14px;}
+  .panel{background:var(--green); color:#f5efdd; border-radius:12px; padding:18px 16px; margin:0 0 14px;}
+  .panel .kick{letter-spacing:.24em; font-size:10.5px; color:var(--gold); text-transform:uppercase;}
+  .panel h2{margin:6px 0 4px; font-size:22px; line-height:1.25;}
+  .panel p{margin:4px 0; color:#e8dfc6; font-size:14.5px;}
+  h2.sec{font-size:20px; margin:4px 0 8px; color:var(--green);}
+  h3{font-size:16px; margin:14px 0 6px; color:var(--green);}
+  .kick2{letter-spacing:.22em; font-size:10.5px; color:#9a8c5f; text-transform:uppercase; margin-bottom:2px;}
+  label{display:block; font-size:13px; font-weight:600; color:var(--green); margin:12px 0 4px;}
+  label:first-child{margin-top:0;}
+  .hint{font-size:12.5px; color:var(--mute); font-weight:400; margin:2px 0 0;}
+  input[type=text], input[type=date], input[type=number], textarea, select{
+    width:100%; font:inherit; font-size:16px; padding:10px 12px; border:1px solid var(--line);
+    border-radius:9px; background:#fff; color:var(--ink);}
+  textarea{min-height:64px; resize:vertical;}
+  input:focus, textarea:focus, select:focus{outline:2px solid var(--gold); outline-offset:0; border-color:var(--gold);}
+  .btn{display:inline-block; background:var(--green); color:#fff; border:none; border-radius:10px;
+    padding:12px 18px; font-size:15.5px; font-weight:600; cursor:pointer; width:100%; margin-top:14px;}
+  .btn.gold{background:var(--gold); color:#2b2410;}
+  .btn.ghost{background:none; color:var(--green); border:1.5px solid var(--green);}
+  .btn.small{width:auto; padding:8px 14px; font-size:14px; margin-top:8px;}
+  .btn.danger{background:none; color:var(--burg); border:1.5px solid var(--burg);}
+  .grid{display:grid; grid-template-columns:repeat(8,1fr); gap:5px; margin-top:8px;}
+  .sq{aspect-ratio:1; border:1.6px solid #c9bd97; border-radius:5px; background:#fff;}
+  .sq.fill{background:var(--green); border-color:var(--green);}
+  .sq.last{border-color:var(--gold); border-width:2.4px;}
+  .sq.last.fill{background:var(--gold);}
+  .mrow{display:flex; align-items:center; gap:8px; margin:7px 0;}
+  .mrow .mlab{flex:0 0 34%; font-size:12.5px; color:var(--ink); line-height:1.3;}
+  .mrow .grid{flex:1; margin-top:0;}
+  .bigcount{font-size:15px; color:var(--green); font-weight:700;}
+  .acts{display:flex; gap:8px;}
+  .act{flex:1; border-radius:10px; padding:10px; color:#fff; min-height:86px;}
+  .act .an{font-size:10.5px; letter-spacing:.18em; opacity:.85;}
+  .act .at{font-size:16px; font-weight:700; margin:2px 0;}
+  .act .aw{font-size:11.5px; opacity:.9;}
+  .act .ap{font-size:12px; margin-top:5px; font-weight:600;}
+  .weekitem{display:flex; justify-content:space-between; align-items:center; gap:10px;
+    padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:var(--card); margin:0 0 8px; cursor:pointer;}
+  .weekitem .wt{font-weight:700; color:var(--green);}
+  .weekitem .wf{font-size:13px; color:var(--mute); display:block; font-weight:400;}
+  .weekitem.cur{border-color:var(--gold); box-shadow:0 0 0 1.5px var(--gold);}
+  .badge{background:var(--gold); color:#2b2410; font-size:11px; font-weight:700; border-radius:20px; padding:3px 9px; white-space:nowrap;}
+  .bite{display:flex; gap:9px; align-items:flex-start; margin:8px 0;}
+  .bite input[type=checkbox]{width:23px; height:23px; margin-top:9px; accent-color:var(--green); flex:0 0 auto;}
+  .bite input[type=text]{flex:1;}
+  .bite .del{background:none; border:none; color:var(--burg); font-size:19px; cursor:pointer; padding:6px 2px;}
+  .bite.done input[type=text]{text-decoration:line-through; color:var(--mute);}
+  .modes{display:flex; flex-wrap:wrap; gap:7px; margin:6px 0 4px;}
+  .mode{border:1.6px solid var(--line); background:#fff; border-radius:22px; padding:8px 13px; font-size:14px; cursor:pointer;}
+  .mode.on{background:var(--green); color:#fff; border-color:var(--green); font-weight:700;}
+  .fixtable .row{display:flex; gap:0; border:1px solid var(--line); border-radius:9px; overflow:hidden; margin:0 0 8px; background:#fff;}
+  .fixtable .lab{flex:0 0 33%; background:#fbf7ea; border-left:4px solid var(--burg); padding:10px; font-size:12px; font-weight:700; color:var(--burg); letter-spacing:.03em;}
+  .fixtable .fix{flex:1; padding:10px 12px; font-size:14px;}
+  .dayrow{display:flex; justify-content:space-between; gap:8px; padding:9px 2px; border-bottom:1px solid var(--line); font-size:14px;}
+  .dayrow .dm{color:var(--mute); font-size:12.5px;}
+  .strike{text-decoration:line-through; color:var(--mute);}
+  .toast{position:fixed; left:50%; transform:translateX(-50%); bottom:96px; background:var(--green); color:#fff;
+    padding:9px 18px; border-radius:22px; font-size:14px; opacity:0; pointer-events:none; transition:opacity .25s; z-index:99;}
+  .toast.show{opacity:1;}
+  .small{font-size:13px; color:var(--mute);}
+  .notnow{background:#f7e9ea; border:1.6px solid var(--burg); border-radius:10px; padding:12px 14px;}
+  .notnow .t{color:var(--burg); font-weight:700; letter-spacing:.14em; font-size:12px;}
+  footer{max-width:640px; margin:4px auto 0; padding:0 16px; text-align:center; color:var(--mute); font-size:12.5px;}
+  .prog{height:14px; background:#eee5cb; border-radius:8px; overflow:hidden; margin:8px 0 4px;}
+  .prog div{height:100%; background:var(--gold); border-radius:8px;}
+  .brow{display:flex; gap:6px; align-items:center; margin:6px 0;}
+  .brow .blab{flex:1; font-size:13.5px; line-height:1.3;}
+  .brow input[type=number]{width:88px; padding:8px 9px; font-size:15px;}
+  .brow input[type=text].blabIn{flex:1; padding:8px 9px; font-size:14px;}
+  .bhead{display:flex; gap:6px; margin:10px 0 2px;}
+  .bhead span{font-size:11px; font-weight:700; letter-spacing:.08em; color:var(--mute);}
+  .bhead .h1{flex:1;} .bhead .h2{width:88px; text-align:left;}
+  .totline{display:flex; justify-content:space-between; font-weight:700; color:var(--green); padding:7px 0; border-top:1.5px solid var(--line); margin-top:8px;}
+  .vgrid{display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:8px;}
+  .vgrid figure{margin:0; position:relative;}
+  .vgrid img{width:100%; border-radius:9px; display:block; border:1px solid var(--line);}
+  .vgrid figcaption{margin-top:4px;}
+  .vgrid figcaption input{font-size:13.5px; padding:7px 9px;}
+  .vdel{position:absolute; top:6px; right:6px; background:rgba(18,64,51,.85); color:#fff; border:none;
+    width:26px; height:26px; border-radius:50%; font-size:15px; cursor:pointer; line-height:1;}
+  .spotwrap{float:right; position:relative; margin:2px 0 8px 12px;}
+  .spot{display:block; width:84px; height:84px; border:1.8px dashed var(--gold); border-radius:10px;
+    overflow:hidden; cursor:pointer; background:rgba(198,160,74,.08);}
+  .spot img{width:100%; height:100%; object-fit:cover; display:block;}
+  .spot .slab{display:flex; align-items:center; justify-content:center; height:100%; font-size:10.5px;
+    letter-spacing:.05em; color:#9a8c5f; text-align:center; padding:5px; line-height:1.35;}
+  .spotdel{position:absolute; top:-7px; right:-7px; width:22px; height:22px; border-radius:50%;
+    background:var(--burg); color:#fff; border:none; font-size:13px; cursor:pointer; line-height:1; z-index:2;}
+  .hidden{display:none !important;}
+  a{color:var(--green2);}
+</style>
+</head>
+<body>
+<header>
+  <div class="kick">A 12-Week Life Season Workbook</div>
+  <h1 class="serif">My Next Season</h1>
+  <div class="sub">One goal. Twelve weeks. Sixty-four bites.</div>
+  <div class="by">Created by Chengetai Shereni · © 2026</div>
+</header>
+<main id="app"></main>
+<footer>
+  <p>Your season is stored privately on this phone, in this browser.<br>
+  It is never uploaded anywhere. Use Review → Download a backup now and then.</p>
+</footer>
+<nav id="tabs" class="hidden">
+  <button data-tab="season">Season</button>
+  <button data-tab="weeks">Weeks</button>
+  <button data-tab="today">Today</button>
+  <button data-tab="money">Money</button>
+  <button data-tab="slips">Slips</button>
+  <button data-tab="review">Review</button>
+</nav>
+<div class="toast" id="toast">Saved ✓</div>
+
+<script>
+"use strict";
+var KEY = "myNextSeason.v1";
+var MODES = ["Rest","Keep Going","Build","Deep Focus"];
+var FIXES = [
+  ["TOO BIG","Cut it in half. Then in half again, if you must."],
+  ["BLOCKED","Name the missing support — a person, a tool, an answer, an hour."],
+  ["NO ENERGY","Drop to a smaller mode today. Rest is also a setting."],
+  ["IT NO LONGER MATTERS","Delete it, in writing. No guilt, no ghost tasks."],
+  ["SOMETHING BIGGER APPEARED","Swap, don't stack. Decide like the owner of the season."],
+  ["I KEPT AVOIDING IT","Shrink it, schedule it, or pair it with support."],
+  ["I FORGOT","Change the reminder, not the goal."]
+];
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function todayStr(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function parseD(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+function addDays(s,n){var d=parseD(s);d.setDate(d.getDate()+n);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function fmtD(s){if(!s)return "";return parseD(s).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});}
+function emptyWeek(){return {focus:"",milestone:1,bites:[{t:"",done:false},{t:"",done:false},{t:"",done:false},{t:"",done:false},{t:"",done:false}],bonus:{t:"",done:false},review:{worked:"",way:"",adjust:""}};}
+var ENV_LABELS=["Rent & utilities","Food & groceries","Transport","My child","Phone & subscriptions","Laundry & home","Savings — the goal move","Going out","Extras — last, from what's left","",""];
+function blankMonth(){return {name:"",pay:"",other:"",rows:ENV_LABELS.map(function(l){return {label:l,planned:"",actual:""};}),leftoverTo:"",held:"",adjust:""};}
+function defaultMoney(){return {goal:"",target:"",saved:"",by:"",move:"",months:[blankMonth(),blankMonth(),blankMonth()]};}
+function emptySeason(){var w={};for(var i=1;i<=12;i++)w[i]=emptyWeek();return {goal:"",why:"",picture:"",outcomes:["","",""],notNow:"",startDate:todayStr(),milestones:["","","","","","","",""],weeks:w,daily:{},money:defaultMoney(),vision:[],spots:{first:"",money:"",w1:"",w5:"",w9:""},review:{proud:"",learned:"",unfinished:"",next:""}};}
+function load(){try{var raw=localStorage.getItem(KEY);if(raw){var d=JSON.parse(raw);if(d&&d.season)return d;}}catch(e){}return {season:null,past:[]};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(DB));}catch(e){} toast();}
+var DB = load();
+var tab = DB.season ? "season" : "setup";
+var openWeek = null;
+var toastTimer = null;
+function toast(){var t=document.getElementById("toast");t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove("show");},900);}
+function curWeekNum(){if(!DB.season)return 1;var diff=Math.floor((parseD(todayStr())-parseD(DB.season.startDate))/86400000);var w=Math.floor(diff/7)+1;return Math.max(1,Math.min(12,w));}
+function weekBites(w){var n=0,t=0,i;for(i=0;i<w.bites.length;i++){if(w.bites[i].t.trim()){t++;if(w.bites[i].done)n++;}}if(w.bonus.t.trim()){t++;if(w.bonus.done)n++;}return {done:n,total:t};}
+function milestoneFilled(){var f=[0,0,0,0,0,0,0,0];if(!DB.season)return f;for(var wn=1;wn<=12;wn++){var w=DB.season.weeks[wn];if(!w)continue;var m=Math.max(1,Math.min(8,w.milestone||1))-1;var all=w.bites.concat([w.bonus]);for(var i=0;i<all.length;i++){if(all[i].t.trim()&&all[i].done&&f[m]<8)f[m]++;}}return f;}
+function totalFilled(){return milestoneFilled().reduce(function(a,b){return a+b;},0);}
+function app(){return document.getElementById("app");}
+function render(){
+  var nav=document.getElementById("tabs");
+  if(!DB.season){nav.classList.add("hidden");renderSetup();return;}
+  nav.classList.remove("hidden");
+  var btns=nav.querySelectorAll("button");for(var i=0;i<btns.length;i++){btns[i].classList.toggle("on",btns[i].getAttribute("data-tab")===tab);}
+  if(tab==="season")renderSeason();
+  else if(tab==="weeks")renderWeeks();
+  else if(tab==="today")renderToday();
+  else if(tab==="money")renderMoney();
+  else if(tab==="slips")renderSlips();
+  else if(tab==="review")renderReview();
+  else if(tab==="setup")renderSetup();
+  window.scrollTo(0,0);
+}
+document.getElementById("tabs").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;tab=b.getAttribute("data-tab");openWeek=null;render();});
+
+/* ---------------- SETUP ---------------- */
+function renderSetup(){
+  var s=DB.season||emptySeason();var editing=!!DB.season;
+  var mHtml="";for(var i=0;i<8;i++){mHtml+='<label>Milestone '+(i+1)+(i===0?' <span class="hint">— the first proof this season is real</span>':'')+'</label><input type="text" id="ms'+i+'" value="'+esc(s.milestones[i])+'" placeholder="A step on the way">';}
+  app().innerHTML=
+  '<div class="card"><div class="kick2">Picture · Pick · Plan</div><h2 class="sec serif">'+(editing?"Edit your season":"Set up your season")+'</h2>'+
+  '<p class="small">One goal, twelve weeks. Small on purpose: a season you can actually finish beats a year you abandon in February.</p>'+
+  '<label>The Picture — how does your life look at the end of these 12 weeks?</label><textarea id="f_picture" placeholder="Describe the life on the other side of this season">'+esc(s.picture)+'</textarea>'+
+  '<label>Your ONE big goal</label><input type="text" id="f_goal" value="'+esc(s.goal)+'" placeholder="If this season works, what is true that is not true now?">'+
+  '<label>Why this one, why now?</label><textarea id="f_why" placeholder="Your honest reason">'+esc(s.why)+'</textarea>'+
+  '<label>At most three outcomes <span class="hint">— by the end, these are done</span></label>'+
+  '<input type="text" id="f_o0" value="'+esc(s.outcomes[0])+'" placeholder="Outcome 1"><div style="height:6px"></div>'+
+  '<input type="text" id="f_o1" value="'+esc(s.outcomes[1])+'" placeholder="Outcome 2"><div style="height:6px"></div>'+
+  '<input type="text" id="f_o2" value="'+esc(s.outcomes[2])+'" placeholder="Outcome 3">'+
+  '<label>Season starts</label><input type="date" id="f_start" value="'+esc(s.startDate)+'"><p class="hint">Twelve weeks from this date. The app will always know which week you are in.</p>'+
+  '<h3>The 8 milestones</h3><p class="small">Break the goal into eight landing places, in order. Each one fills a row of your grid.</p>'+mHtml+
+  '<label>Not this season</label><div class="notnow"><div class="t">NOT THIS SEASON</div><textarea id="f_notnow" style="margin-top:8px" placeholder="Everything cannot be urgent at once. Park the noisy things here, in writing, where they can wait quietly.">'+esc(s.notNow)+'</textarea></div>'+
+  '<button class="btn gold" id="saveSeason">'+(editing?"Save changes":"Begin my season")+'</button>'+
+  (editing?'<button class="btn ghost" id="cancelEdit">Back</button>':"")+'</div>';
+  document.getElementById("saveSeason").addEventListener("click",function(){
+    var ns=DB.season||emptySeason();
+    ns.picture=document.getElementById("f_picture").value;
+    ns.goal=document.getElementById("f_goal").value.trim();
+    ns.why=document.getElementById("f_why").value;
+    ns.outcomes=[document.getElementById("f_o0").value,document.getElementById("f_o1").value,document.getElementById("f_o2").value];
+    var sd=document.getElementById("f_start").value; if(sd)ns.startDate=sd;
+    for(var i=0;i<8;i++)ns.milestones[i]=document.getElementById("ms"+i).value;
+    ns.notNow=document.getElementById("f_notnow").value;
+    if(!ns.goal){alert("Give your season its one big goal first — everything else hangs on it.");return;}
+    DB.season=ns; save(); tab="season"; render();
+  });
+  var c=document.getElementById("cancelEdit"); if(c)c.addEventListener("click",function(){tab="season";render();});
+}
+
+/* ---------------- CORNER PICTURES ---------------- */
+function processImage(file,done){var rd=new FileReader();rd.onload=function(){var img=new Image();img.onload=function(){var max=900;var sc=Math.min(1,max/Math.max(img.width,img.height));var cv=document.createElement("canvas");cv.width=Math.round(img.width*sc);cv.height=Math.round(img.height*sc);cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);done(cv.toDataURL("image/jpeg",0.82));};img.src=rd.result;};rd.readAsDataURL(file);}
+function spotHTML(s,key,label){
+  if(!s.spots)s.spots={first:"",money:"",w1:"",w5:"",w9:""};
+  var v=s.spots[key];
+  return '<span class="spotwrap"><label class="spot">'+(v?'<img src="'+v+'" alt="">':'<span class="slab">'+label+'</span>')+'<input type="file" accept="image/*" data-spotfile="'+key+'" hidden></label>'+(v?'<button class="spotdel" data-spotdel="'+key+'" aria-label="Remove picture">×</button>':"")+'</span>';
+}
+function bindSpots(s){
+  app().querySelectorAll("[data-spotfile]").forEach(function(inp){inp.addEventListener("change",function(){var f=inp.files&&inp.files[0];if(!f)return;var key=inp.getAttribute("data-spotfile");processImage(f,function(url){if(!s.spots)s.spots={};s.spots[key]=url;save();render();});});});
+  app().querySelectorAll("[data-spotdel]").forEach(function(b){b.addEventListener("click",function(e){e.preventDefault();if(s.spots)s.spots[b.getAttribute("data-spotdel")]="";save();render();});});
+}
+
+/* ---------------- SEASON ---------------- */
+function renderSeason(){
+  var s=DB.season;var cw=curWeekNum();var end=addDays(s.startDate,83);var f=milestoneFilled();var filled=totalFilled();
+  var acts=[["ACT I","Begin","Weeks 1–4","#2e7d5b",1,4],["ACT II","Grow","Weeks 5–8","#a8823a",5,8],["ACT III","Finish","Weeks 9–12","#802a34",9,12]];
+  var aHtml='<div class="acts">';
+  acts.forEach(function(a){var d=0;for(var w=a[4];w<=a[5];w++){d+=weekBites(s.weeks[w]).done;}
+    aHtml+='<div class="act" style="background:'+a[3]+'"><div class="an">'+a[0]+'</div><div class="at serif">'+a[1]+'</div><div class="aw">'+a[2]+'</div><div class="ap">'+d+' bites done</div></div>';});
+  aHtml+='</div>';
+  var gHtml="";
+  for(var r=0;r<8;r++){var cells="";for(var cix=0;cix<8;cix++){cells+='<div class="sq'+(cix<f[r]?" fill":"")+(cix===7?" last":"")+'"></div>';}
+    gHtml+='<div class="mrow"><div class="mlab">'+(s.milestones[r]?esc(s.milestones[r]):"Milestone "+(r+1))+'</div><div class="grid">'+cells+'</div></div>';}
+  var outs=s.outcomes.filter(function(o){return o.trim();}).map(function(o){return "<p>· "+esc(o)+"</p>";}).join("");
+  app().innerHTML=
+  '<div class="panel">'+spotHTML(s,"first","ONE PICTURE OF THIS SEASON")+'<div class="kick">This season\'s one big goal</div><h2 class="serif">'+esc(s.goal)+'</h2>'+
+  (s.why?'<p><i>'+esc(s.why)+'</i></p>':"")+(outs||"")+
+  '<p style="margin-top:10px"><b>'+fmtD(s.startDate)+" → "+fmtD(end)+'</b> · You are in <b>Week '+cw+" of 12</b></p></div>"+
+  aHtml+
+  '<div class="card"><div class="kick2">The 64-Square Grid</div><div class="bigcount">'+filled+' of 64 squares filled</div>'+
+  '<p class="small">One square for every finished bite. A row is a milestone; the gold-edged square is its landing.</p>'+gHtml+
+  '<p class="small" style="margin-top:10px">'+filled+' of 64 bites. That is the whole system — everything else is support.</p></div>'+
+  (s.notNow.trim()?'<div class="notnow" style="margin-bottom:14px"><div class="t">NOT THIS SEASON</div><p style="margin:6px 0 0">'+esc(s.notNow)+'</p></div>':"")+
+  '<button class="btn ghost" id="editSeason">Edit season setup</button>';
+  document.getElementById("editSeason").addEventListener("click",function(){tab="setup";render();});
+  bindSpots(s);
+  if(!s.vision)s.vision=[];
+  var vFigs=s.vision.map(function(v,i){return '<figure><img src="'+v.img+'" alt=""><button class="vdel" data-vdel="'+i+'" aria-label="Remove picture">×</button><figcaption><input type="text" data-vcap="'+i+'" value="'+esc(v.cap)+'" placeholder="Caption — what is this, in the season\'s life?"></figcaption></figure>';}).join("");
+  app().insertAdjacentHTML("beforeend",
+   '<div class="card"><div class="kick2">Step 1 · Picture, in pictures</div><h3 style="margin-top:2px" class="serif">Vision Board</h3>'+
+   '<p class="small">The life this season is walking towards — in pictures, not words. Upload the faces, places and feelings. Leave it unfinished if part of the picture has not arrived yet.</p>'+
+   (vFigs?'<div class="vgrid">'+vFigs+'</div>':'<p class="small"><i>No pictures yet. Your board is a blank page, waiting.</i></p>')+
+   '<label style="margin-top:12px">Add pictures</label><input type="file" id="vUp" accept="image/*" multiple></div>');
+  app().querySelectorAll("[data-vdel]").forEach(function(b){b.addEventListener("click",function(){s.vision.splice(+b.getAttribute("data-vdel"),1);save();render();});});
+  app().querySelectorAll("[data-vcap]").forEach(function(inp){inp.addEventListener("input",function(){s.vision[+inp.getAttribute("data-vcap")].cap=inp.value;save();});});
+  document.getElementById("vUp").addEventListener("change",function(){
+    var files=Array.prototype.slice.call(this.files||[]); if(!files.length)return;
+    files.forEach(function(f){
+      var rd=new FileReader();
+      rd.onload=function(){var img=new Image();
+        img.onload=function(){var max=900;var sc=Math.min(1,max/Math.max(img.width,img.height));
+          var cv=document.createElement("canvas");cv.width=Math.round(img.width*sc);cv.height=Math.round(img.height*sc);
+          cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);
+          s.vision.push({img:cv.toDataURL("image/jpeg",0.82),cap:""});save();render();};
+        img.src=rd.result;};
+      rd.readAsDataURL(f);
+    });
+  });
+}
+
+
+/* ---------------- WEEKS ---------------- */
+function renderWeeks(){
+  var s=DB.season;
+  if(openWeek){renderWeekEditor(openWeek);return;}
+  var cw=curWeekNum();var html='<div class="kick2">Twelve Weeks</div><h2 class="sec serif">Your weeks</h2><p class="small">Tap a week to open it. Five bites a week, one bonus — that pace fills the grid.</p>';
+  for(var w=1;w<=12;w++){var wk=s.weeks[w];var wb=weekBites(wk);var act=w<=4?"Begin":(w<=8?"Grow":"Finish");
+    var dates=fmtD(addDays(s.startDate,(w-1)*7))+" – "+fmtD(addDays(s.startDate,(w-1)*7+6));
+    html+='<div class="weekitem'+(w===cw?" cur":"")+'" data-w="'+w+'"><div><span class="wt">Week '+w+' · '+act+'</span><span class="wf">'+dates+(wk.focus?" · "+esc(wk.focus):"")+'</span></div><div>'+(w===cw?'<span class="badge">THIS WEEK</span> ':"")+'<span class="small">'+wb.done+"/"+wb.total+' bites</span></div></div>';}
+  app().innerHTML=html;
+  var items=app().querySelectorAll(".weekitem");
+  for(var i=0;i<items.length;i++){items[i].addEventListener("click",function(){openWeek=+this.getAttribute("data-w");render();});}
+}
+function biteRow(b,idx,bonus){
+  return '<div class="bite'+(b.done?" done":"")+'"><input type="checkbox" data-b="'+(bonus?"bonus":idx)+'" '+(b.done?"checked":"")+'><input type="text" data-t="'+(bonus?"bonus":idx)+'" value="'+esc(b.t)+'" placeholder="'+(bonus?"Bonus bite — only if the week is flowing":"One bite: small, visible, finishable")+'">'+(bonus?"":'<button class="del" data-del="'+idx+'" aria-label="Remove bite">×</button>')+'</div>';
+}
+function renderWeekEditor(wn){
+  var s=DB.season;var w=s.weeks[wn];var cw=curWeekNum();
+  var mOpts="";for(var i=1;i<=8;i++){mOpts+='<option value="'+i+'"'+(w.milestone===i?" selected":"")+'>Milestone '+i+(s.milestones[i-1]?" — "+esc(s.milestones[i-1]):"")+'</option>';}
+  var bHtml="";for(var i=0;i<w.bites.length;i++)bHtml+=biteRow(w.bites[i],i,false);
+  app().innerHTML=
+  '<button class="btn ghost small" id="backWeeks">← All weeks</button>'+
+  ((wn===1||wn===5||wn===9)?'<div class="card" style="margin-top:12px">'+spotHTML(s,"w"+wn,"ONE PICTURE — FOR THIS ACT")+'<div class="kick2">Vision · One picture</div><p class="small" style="margin:4px 0 0">Week '+wn+' opens a new act of your season. One picture for where this act is heading — tap the frame to add it.</p><div style="clear:both"></div></div>':"")+
+  '<div class="card" style="margin-top:12px"><div class="kick2">Week '+wn+' of 12'+(wn===cw?" · This week":"")+'</div>'+
+  '<div class="small">'+fmtD(addDays(s.startDate,(wn-1)*7))+" – "+fmtD(addDays(s.startDate,(wn-1)*7+6))+'</div>'+
+  '<label>This week\'s focus</label><input type="text" id="w_focus" value="'+esc(w.focus)+'" placeholder="One line: what is this week about?">'+
+  '<label>This week works on</label><select id="w_ms">'+mOpts+'</select><p class="hint">Finished bites this week fill squares in this milestone\'s row.</p>'+
+  '<h3>This week\'s bites</h3><div id="w_bites">'+bHtml+'</div>'+
+  '<button class="btn ghost small" id="addBite">+ Add a bite</button>'+
+  '<h3>Bonus bite</h3>'+biteRow(w.bonus,0,true)+
+  '<h3>The ten-minute check</h3>'+
+  '<label>What worked?</label><textarea id="w_worked" placeholder="Name it, so you can repeat it">'+esc(w.review.worked)+'</textarea>'+
+  '<label>What got in the way?</label><textarea id="w_way" placeholder="The facts, without the self-attack">'+esc(w.review.way)+'</textarea>'+
+  '<label>One adjustment for next week</label><textarea id="w_adjust" placeholder="One. Not five. One.">'+esc(w.review.adjust)+'</textarea>'+
+  '<p class="small" style="margin-top:12px">Everything saves as you type. Returns, not streaks: a missed week bends the plan, it never breaks it.</p></div>';
+  function bind(){
+    var box=document.getElementById("w_bites");
+    box.querySelectorAll("input[type=text]").forEach(function(inp){inp.addEventListener("input",function(){w.bites[+inp.getAttribute("data-t")].t=inp.value;save();});});
+    box.querySelectorAll("input[type=checkbox]").forEach(function(cb){cb.addEventListener("change",function(){w.bites[+cb.getAttribute("data-b")].done=cb.checked;save();render();});});
+    box.querySelectorAll("[data-del]").forEach(function(btn){btn.addEventListener("click",function(){w.bites.splice(+btn.getAttribute("data-del"),1);save();render();});});
+  }
+  document.getElementById("backWeeks").addEventListener("click",function(){openWeek=null;render();});
+  bindSpots(s);
+  document.getElementById("w_focus").addEventListener("input",function(){w.focus=this.value;save();});
+  document.getElementById("w_ms").addEventListener("change",function(){w.milestone=+this.value;save();render();});
+  bind();
+  document.getElementById("addBite").addEventListener("click",function(){w.bites.push({t:"",done:false});save();render();});
+  var card=app().querySelector(".card");
+  card.querySelectorAll("input[type=text][data-t=bonus]").forEach(function(inp){inp.addEventListener("input",function(){w.bonus.t=inp.value;save();});});
+  card.querySelectorAll("input[type=checkbox][data-b=bonus]").forEach(function(cb){cb.addEventListener("change",function(){w.bonus.done=cb.checked;save();render();});});
+  document.getElementById("w_worked").addEventListener("input",function(){w.review.worked=this.value;save();});
+  document.getElementById("w_way").addEventListener("input",function(){w.review.way=this.value;save();});
+  document.getElementById("w_adjust").addEventListener("input",function(){w.review.adjust=this.value;save();});
+}
+
+/* ---------------- TODAY ---------------- */
+function renderToday(){
+  var s=DB.season;var dk=todayStr();var d=s.daily[dk]||{mode:"",minutes:"",bite:"",done:false};s.daily[dk]=d;
+  var chips=MODES.map(function(m){return '<button class="mode'+(d.mode===m?" on":"")+'" data-m="'+m+'">'+m+'</button>';}).join("");
+  var days=Object.keys(s.daily).filter(function(k){return k!==dk&&((s.daily[k].bite||"").trim()||s.daily[k].mode);}).sort().reverse().slice(0,14);
+  var hist=days.map(function(k){var e=s.daily[k];return '<div class="dayrow"><div>'+fmtD(k)+(e.bite?' · <span class="'+(e.done?"strike":"")+'">'+esc(e.bite)+'</span>':"")+'</div><div class="dm">'+esc(e.mode)+(e.minutes?" · "+esc(e.minutes)+" min":"")+'</div></div>';}).join("");
+  app().innerHTML=
+  '<div class="kick2">The Daily Page</div><h2 class="sec serif">Start where you are</h2>'+
+  '<p class="small">Yesterday\'s plan was written by last night\'s version of you. This page belongs to the one who woke up. First, honestly pick today\'s mode:</p>'+
+  '<div class="card"><div class="modes">'+chips+'</div>'+
+  '<p class="small">Rest = recover on purpose. Keep Going = small and steady. Build = normal working day. Deep Focus = rare, protected, high energy.</p>'+
+  '<label>Usable minutes today</label><input type="number" id="d_min" min="0" step="5" value="'+esc(d.minutes)+'" placeholder="e.g. 25">'+
+  '<label>Today\'s one bite</label><div class="bite'+(d.done?" done":"")+'"><input type="checkbox" id="d_done" '+(d.done?"checked":"")+'><input type="text" id="d_bite" value="'+esc(d.bite)+'" placeholder="One action — small enough to finish, clear enough to see when it\'s done"></div>'+
+  '<p class="small">A low-capacity day is weather, not character. If the day collapses, shrink the bite — or choose Rest and mean it.</p></div>'+
+  (hist?'<div class="card"><div class="kick2">Recent days</div>'+hist+'</div>':"")+
+  '<div class="card"><div class="kick2">Fix the plan, not the person</div><h3 style="margin-top:4px">When a bite doesn\'t happen</h3><div class="fixtable">'+
+  FIXES.map(function(f){return '<div class="row"><div class="lab">'+f[0]+'</div><div class="fix">'+f[1]+'</div></div>';}).join("")+
+  '</div><p class="small"><b>Returns over streaks.</b> What counts is how kindly and quickly you come back.</p></div>';
+  app().querySelectorAll(".mode").forEach(function(b){b.addEventListener("click",function(){d.mode=b.getAttribute("data-m");save();render();});});
+  document.getElementById("d_min").addEventListener("input",function(){d.minutes=this.value;save();});
+  document.getElementById("d_bite").addEventListener("input",function(){d.bite=this.value;save();});
+  document.getElementById("d_done").addEventListener("change",function(){d.done=this.checked;save();render();});
+}
+
+/* ---------------- SLIPS ---------------- */
+function renderSlips(){
+  app().innerHTML=
+  '<div class="kick2">Fix the plan, not the person</div><h2 class="sec serif">When a bite doesn\'t happen</h2>'+
+  '<p class="small">A missed bite is information about the plan, never a verdict on the person. Find the row that matches, apply its fix, and move on — that is the whole ceremony.</p>'+
+  '<div class="card"><div class="fixtable">'+
+  FIXES.map(function(f){return '<div class="row"><div class="lab">'+f[0]+'</div><div class="fix">'+f[1]+'</div></div>';}).join("")+
+  '</div><p class="small"><b>Returns over streaks.</b> What counts is how kindly and quickly you come back.</p></div>';
+}
+
+/* ---------------- REVIEW ---------------- */
+function filledFor(s){var f=[0,0,0,0,0,0,0,0];for(var wn=1;wn<=12;wn++){var w=s.weeks[wn];if(!w)continue;var m=Math.max(1,Math.min(8,w.milestone||1))-1;var all=w.bites.concat([w.bonus]);for(var i=0;i<all.length;i++){if(all[i].t.trim()&&all[i].done&&f[m]<8)f[m]++;}}return f;}
+function renderReview(){
+  var s=DB.season;var f=milestoneFilled();var filled=f.reduce(function(a,b){return a+b;},0);
+  var landed=f.filter(function(x){return x===8;}).length;
+  var bd=0,bt=0;for(var w=1;w<=12;w++){var wb=weekBites(s.weeks[w]);bd+=wb.done;bt+=wb.total;}
+  var daysLogged=Object.keys(s.daily).filter(function(k){var e=s.daily[k];return (e.bite||"").trim()||e.mode;}).length;
+  var pastHtml="";
+  if(DB.past.length){pastHtml='<div class="card"><div class="kick2">Past seasons — kept, not lost</div>'+DB.past.map(function(p){var pf=filledFor(p);var pt=pf.reduce(function(a,b){return a+b;},0);return '<div class="dayrow"><div><b>'+esc(p.goal)+'</b><br><span class="dm">'+fmtD(p.startDate)+" → "+fmtD(addDays(p.startDate,83))+'</span></div><div class="dm">'+pt+'/64 squares</div></div>';}).join("")+'</div>';}
+  app().innerHTML=
+  '<div class="kick2">Season Review</div><h2 class="sec serif">Read the grid, kindly</h2>'+
+  '<div class="card"><p style="margin:2px 0"><b>'+filled+'</b> of 64 squares filled · <b>'+bd+'</b> bites finished · <b>'+landed+'</b> of 8 milestones landed · <b>'+daysLogged+'</b> days logged</p>'+
+  '<p class="small">The grid is the honest record. It shows effort, not worth.</p></div>'+
+  '<div class="card"><label>What are you proudest of?</label><textarea id="r_proud">'+esc(s.review.proud)+'</textarea>'+
+  '<label>What did this season teach you about how you work?</label><textarea id="r_learned">'+esc(s.review.learned)+'</textarea>'+
+  '<label>What is honestly unfinished?</label><textarea id="r_unfinished">'+esc(s.review.unfinished)+'</textarea>'+
+  '<label>What might the next season be?</label><textarea id="r_next" placeholder="One line is enough. Let it rest until you are ready.">'+esc(s.review.next)+'</textarea></div>'+
+  pastHtml+
+  '<div class="card"><div class="kick2">Your data</div><p class="small">Everything lives only in this browser, on this phone. Download a backup file now and then — and bring it back with Restore if you ever change phones.</p>'+
+  '<button class="btn gold" id="expBtn">Download a backup</button>'+
+  '<label style="margin-top:16px">Restore from a backup file</label><input type="file" id="impFile" accept=".json,application/json">'+
+  '<button class="btn danger" id="newSeason">Finish this season &amp; start a new one</button>'+
+  '<p class="small">Starting a new season keeps this one safe under Past seasons. Nothing is deleted.</p></div>';
+  document.getElementById("r_proud").addEventListener("input",function(){s.review.proud=this.value;save();});
+  document.getElementById("r_learned").addEventListener("input",function(){s.review.learned=this.value;save();});
+  document.getElementById("r_unfinished").addEventListener("input",function(){s.review.unfinished=this.value;save();});
+  document.getElementById("r_next").addEventListener("input",function(){s.review.next=this.value;save();});
+  document.getElementById("expBtn").addEventListener("click",function(){
+    var blob=new Blob([JSON.stringify(DB,null,2)],{type:"application/json"});
+    var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="my-next-season-backup.json";document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+  });
+  document.getElementById("impFile").addEventListener("change",function(){
+    var file=this.files[0];if(!file)return;var rd=new FileReader();
+    rd.onload=function(){try{var d=JSON.parse(rd.result);if(!d||typeof d!=="object"||!("season" in d))throw new Error("bad");
+      DB={season:d.season||null,past:Array.isArray(d.past)?d.past:[]};save();tab=DB.season?"season":"setup";render();alert("Backup restored. Welcome back to your season.");}
+      catch(e){alert("That file did not look like a My Next Season backup. Nothing was changed.");}};
+    rd.readAsText(file);
+  });
+  document.getElementById("newSeason").addEventListener("click",function(){
+    if(!confirm("Finish this season and start a new one? This season stays saved under Past seasons."))return;
+    DB.past.push(DB.season);DB.season=null;openWeek=null;tab="setup";save();render();
+  });
+}
+
+/* ---------------- MONEY ---------------- */
+var moneyMonth = 0;
+function yen(n){return "¥"+Math.round(n).toLocaleString("en-US");}
+function num(v){var n=parseFloat(v);return isNaN(n)?0:n;}
+function renderMoney(){
+  var s=DB.season; if(!s.money)s.money=defaultMoney();
+  var mo=s.money; var m=mo.months[moneyMonth];
+  var pct=mo.target&&num(mo.target)>0?Math.max(0,Math.min(100,Math.round(num(mo.saved)/num(mo.target)*100))):0;
+  var chips=[0,1,2].map(function(i){return '<button class="mode'+(moneyMonth===i?" on":"")+'" data-mm2="'+i+'">Month '+(i+1)+'</button>';}).join("");
+  var rowsHtml=m.rows.map(function(r,i){
+    var lab=(i<9)?'<span class="blab">'+esc(r.label)+'</span>':'<input type="text" class="blabIn" data-rlab="'+i+'" value="'+esc(r.label)+'" placeholder="Your own envelope">';
+    return '<div class="brow">'+lab+'<input type="number" inputmode="decimal" data-rp="'+i+'" value="'+esc(r.planned)+'" placeholder="0"><input type="number" inputmode="decimal" data-ra="'+i+'" value="'+esc(r.actual)+'" placeholder="0"></div>';}).join("");
+  app().innerHTML=
+  '<div class="kick2">Money · Financial Goals</div><h2 class="sec serif">Money, on purpose</h2>'+
+  '<div class="card">'+spotHTML(s,"money","ONE PICTURE — WHAT THE MONEY IS FOR")+'<label>This season, money is for — my one financial goal</label><textarea id="mg_goal" placeholder="What the money must do this season">'+esc(mo.goal)+'</textarea>'+
+  '<label>The number I\'m aiming at (¥)</label><input type="number" inputmode="decimal" id="mg_target" value="'+esc(mo.target)+'" placeholder="e.g. 100000">'+
+  '<label>Saved so far (¥)</label><input type="number" inputmode="decimal" id="mg_saved" value="'+esc(mo.saved)+'">'+
+  '<div class="prog"><div id="mg_bar" style="width:'+pct+'%"></div></div><p class="small" id="mg_prog">'+yen(num(mo.saved))+' of '+yen(num(mo.target))+' — '+pct+'% there</p>'+
+  '<label>By when</label><input type="date" id="mg_by" value="'+esc(mo.by)+'">'+
+  '<label>The monthly move — paid first, before extras (¥ a month)</label><input type="number" inputmode="decimal" id="mg_move" value="'+esc(mo.move)+'">'+
+  '<p class="small">The goal gets paid first. Extras get what is left — never the other way round.</p></div>'+
+  '<div class="card"><div class="kick2">Monthly Budget</div><div class="modes">'+chips+'</div>'+
+  '<label>Month name</label><input type="text" id="mb_name" value="'+esc(m.name)+'" placeholder="e.g. November">'+
+  '<h3>Money in</h3>'+
+  '<div class="brow"><span class="blab">Pay</span><input type="number" inputmode="decimal" id="mb_pay" value="'+esc(m.pay)+'"></div>'+
+  '<div class="brow"><span class="blab">Other</span><input type="number" inputmode="decimal" id="mb_other" value="'+esc(m.other)+'"></div>'+
+  '<div class="totline"><span>Total in</span><span id="mt_in">¥0</span></div>'+
+  '<h3>The envelopes</h3><div class="bhead"><span class="h1">ENVELOPE</span><span class="h2">PLANNED ¥</span><span class="h2">ACTUAL ¥</span></div>'+rowsHtml+
+  '<div class="totline"><span>Planned out</span><span id="mt_plan">¥0</span></div>'+
+  '<div class="totline"><span>Actual out</span><span id="mt_act">¥0</span></div>'+
+  '<div class="totline"><span>Left over</span><span id="mt_left">¥0</span></div>'+
+  '<label>Left over goes to</label><input type="text" id="mb_left" value="'+esc(m.leftoverTo)+'">'+
+  '<label>Did the envelopes hold?</label><select id="mb_held"><option value="">—</option>'+["Yes","Mostly","No"].map(function(o){return '<option'+(m.held===o?" selected":"")+'>'+o+'</option>';}).join("")+'</select>'+
+  '<label>The one adjustment for next month</label><textarea id="mb_adj">'+esc(m.adjust)+'</textarea></div>';
+  function upd(){
+    var tin=num(m.pay)+num(m.other);var tp=0,ta=0;
+    m.rows.forEach(function(r){tp+=num(r.planned);ta+=num(r.actual);});
+    document.getElementById("mt_in").textContent=yen(tin);
+    document.getElementById("mt_plan").textContent=yen(tp);
+    document.getElementById("mt_act").textContent=yen(ta);
+    document.getElementById("mt_left").textContent=yen(tin-ta);
+    var p2=mo.target&&num(mo.target)>0?Math.max(0,Math.min(100,Math.round(num(mo.saved)/num(mo.target)*100))):0;
+    document.getElementById("mg_bar").style.width=p2+"%";
+    document.getElementById("mg_prog").textContent=yen(num(mo.saved))+" of "+yen(num(mo.target))+" — "+p2+"% there";
+  }
+  document.getElementById("mg_goal").addEventListener("input",function(){mo.goal=this.value;save();});
+  document.getElementById("mg_target").addEventListener("input",function(){mo.target=this.value;save();upd();});
+  document.getElementById("mg_saved").addEventListener("input",function(){mo.saved=this.value;save();upd();});
+  document.getElementById("mg_by").addEventListener("change",function(){mo.by=this.value;save();});
+  document.getElementById("mg_move").addEventListener("input",function(){mo.move=this.value;save();});
+  app().querySelectorAll("[data-mm2]").forEach(function(b){b.addEventListener("click",function(){moneyMonth=+b.getAttribute("data-mm2");render();});});
+  document.getElementById("mb_name").addEventListener("input",function(){m.name=this.value;save();});
+  document.getElementById("mb_pay").addEventListener("input",function(){m.pay=this.value;save();upd();});
+  document.getElementById("mb_other").addEventListener("input",function(){m.other=this.value;save();upd();});
+  app().querySelectorAll("[data-rp]").forEach(function(inp){inp.addEventListener("input",function(){m.rows[+inp.getAttribute("data-rp")].planned=inp.value;save();upd();});});
+  app().querySelectorAll("[data-ra]").forEach(function(inp){inp.addEventListener("input",function(){m.rows[+inp.getAttribute("data-ra")].actual=inp.value;save();upd();});});
+  app().querySelectorAll("[data-rlab]").forEach(function(inp){inp.addEventListener("input",function(){m.rows[+inp.getAttribute("data-rlab")].label=inp.value;save();});});
+  document.getElementById("mb_left").addEventListener("input",function(){m.leftoverTo=this.value;save();});
+  document.getElementById("mb_held").addEventListener("change",function(){m.held=this.value;save();});
+  document.getElementById("mb_adj").addEventListener("input",function(){m.adjust=this.value;save();});
+  bindSpots(s);
+  upd();
+}
+
+render();
+</script>
+</body>
+</html>
